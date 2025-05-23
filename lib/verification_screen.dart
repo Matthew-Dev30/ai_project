@@ -1,0 +1,169 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'package:http/http.dart' as http;
+
+class VerificationScreen extends StatefulWidget {
+  const VerificationScreen({super.key});
+
+  @override
+  State<VerificationScreen> createState() => _VerificationScreenState();
+}
+
+class _VerificationScreenState extends State<VerificationScreen> {
+  File? _imageUser;
+  File? _imageId;
+  final picker = ImagePicker();
+
+  Future<void> _pickImageUser(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _imageUser = File(pickedFile.path);
+      });
+    }
+  }
+
+  Future<void> _pickImageId(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _imageId = File(pickedFile.path);
+      });
+    }
+  }
+
+  bool loading = false;
+
+  // String? _error;
+
+  Future<void> uploadImages() async {
+    if (_imageUser == null || _imageId == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please select both images')));
+      return;
+    }
+
+    log(_imageUser.toString());
+    log(_imageId.toString());
+
+    final uri = Uri.parse('https://your-api.com/upload');
+    var request = http.MultipartRequest('POST', uri);
+
+    request.files.add(
+      await http.MultipartFile.fromPath('face', _imageUser!.path),
+    );
+
+    request.files.add(
+      await http.MultipartFile.fromPath('idCard', _imageId!.path),
+    );
+
+    try {
+      final response = await request.send();
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Upload successful')));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Upload failed: ${response.statusCode}')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error: $e')));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Verification"), centerTitle: true),
+      body: Center(
+        child:
+            loading
+                ? CircularProgressIndicator()
+                : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage:
+                            _imageUser != null ? FileImage(_imageUser!) : null,
+                        child:
+                            _imageUser != null
+                                ? const SizedBox()
+                                : Icon(Icons.no_accounts),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () => _pickImageUser(ImageSource.camera),
+                        child: Text('Take Photo'),
+                      ),
+
+                      SizedBox(height: 12),
+
+                      ElevatedButton(
+                        onPressed: () => _pickImageUser(ImageSource.gallery),
+                        child: Text('Pick from Gallery'),
+                      ),
+
+                      const SizedBox(height: 32),
+
+                      Container(
+                        height: 200,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+
+                        child:
+                            _imageId != null
+                                ? Image.file(_imageId!, fit: BoxFit.contain)
+                                : Icon(Icons.no_accounts),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () => _pickImageId(ImageSource.camera),
+                        child: Text('Take Photo'),
+                      ),
+
+                      SizedBox(height: 12),
+
+                      ElevatedButton(
+                        onPressed: () => _pickImageId(ImageSource.gallery),
+                        child: Text('Pick from Gallery'),
+                      ),
+
+                      const SizedBox(height: 32),
+
+                      ElevatedButton(
+                        onPressed: () => uploadImages(),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(Colors.black),
+                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                          maximumSize: WidgetStatePropertyAll(
+                            Size(double.infinity, 40),
+                          ),
+                          minimumSize: WidgetStatePropertyAll(
+                            Size(double.infinity, 40),
+                          ),
+                        ),
+                        child: Text('Submit'),
+                      ),
+                    ],
+                  ),
+                ),
+      ),
+    );
+  }
+}
