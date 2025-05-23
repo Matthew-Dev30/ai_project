@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:ai_project/user_detail.dart';
+import 'package:ai_project/verify_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -53,7 +56,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
     log(_imageUser.toString());
     log(_imageId.toString());
 
-    final uri = Uri.parse('https://your-api.com/upload');
+    setState(() {
+      loading = true;
+    });
+
+    final uri = Uri.parse('http://192.168.8.89:3000/verify');
     var request = http.MultipartRequest('POST', uri);
 
     request.files.add(
@@ -66,16 +73,50 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
     try {
       final response = await request.send();
+
       if (response.statusCode == 200) {
+        setState(() {
+          loading = false;
+        });
+
+        var responseData = await http.Response.fromStream(
+          response,
+        ).timeout(const Duration(seconds: 50));
+
+        var decodeedResponseData = jsonDecode(responseData.body);
+
+        VerifyModel verifyModel = VerifyModel.fromJson(
+          decodeedResponseData["data"],
+        );
+
+        log("responseeeee.bodyy: ${responseData.body.toString()}");
+
+        log("responseeeee: ${verifyModel.toJson()}");
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UserDetail(verifyModel: verifyModel),
+          ),
+        );
+
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Upload successful')));
       } else {
+        setState(() {
+          loading = false;
+        });
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Upload failed: ${response.statusCode}')),
         );
       }
     } catch (e) {
+      setState(() {
+        loading = false;
+      });
+
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Error: $e')));
