@@ -73,7 +73,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       loading = true;
     });
 
-    final uri = Uri.parse('http://192.168.8.89:3000/verify');
+    final uri = Uri.parse('http://192.168.8.46:3000/verify');
     var request = http.MultipartRequest('POST', uri);
 
     request.files.add(
@@ -150,6 +150,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
               : ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
+                  Text(
+                    "User Image",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12),
                   CircleAvatar(
                     radius: 50,
                     backgroundImage:
@@ -165,14 +171,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     child: Text('Take Photo'),
                   ),
 
-                  SizedBox(height: 12),
+                  // SizedBox(height: 12),
 
-                  ElevatedButton(
-                    onPressed: () => _pickImageUser(ImageSource.gallery),
-                    child: Text('Pick from Gallery'),
-                  ),
-
+                  // ElevatedButton(
+                  //   onPressed: () => _pickImageUser(ImageSource.gallery),
+                  //   child: Text('Pick from Gallery'),
+                  // ),
                   const SizedBox(height: 32),
+
+                  Text(
+                    "ID Card Front Image",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12),
 
                   Container(
                     height: 200,
@@ -202,6 +214,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
                   const SizedBox(height: 32),
 
+                  Text(
+                    "ID Card Back Image",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12),
                   Container(
                     height: 200,
                     width: double.infinity,

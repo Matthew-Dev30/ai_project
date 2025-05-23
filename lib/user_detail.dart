@@ -29,17 +29,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Name: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.account_circle_sharp),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.fieldName,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Name: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.fieldName,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -51,17 +57,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "DOB: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.calendar_month),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.dateOfBirth,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "DOB: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.dateOfBirth,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -73,17 +85,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "ID Number: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.insert_drive_file_rounded),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.idNumber,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "ID Number: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.idNumber,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -95,17 +113,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "ID Expiry: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.date_range),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.expiry,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "ID Expiry: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.expiry,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -117,17 +141,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Country: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.flag),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.country,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Country: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.country,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -139,17 +169,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Gender: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.male),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.gender,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Gender: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.gender,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -161,17 +197,24 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Similarity: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.percent),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: "${widget.verifyModel.similarity}%",
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Similarity: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text:
+                              "${widget.verifyModel.similarity?.toStringAsFixed(2)}%",
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -183,20 +226,32 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Is Face Match: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.face),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text:
-                          (widget.verifyModel.faceMatch ?? false)
-                              ? "Face matched"
-                              : "Face not matched",
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Is Face Match: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text:
+                              (widget.verifyModel.faceMatch ?? false)
+                                  ? "Face matched"
+                                  : "Face not matched",
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color:
+                                (widget.verifyModel.faceMatch ?? false)
+                                    ? Colors.green
+                                    : Colors.red,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -208,17 +263,23 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Adderess: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.location_on),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text: widget.verifyModel.address,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Adderess: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text: widget.verifyModel.address,
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -230,38 +291,46 @@ class _UserDetailState extends State<UserDetail> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 1, color: Colors.grey),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: "Cordinates: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  children: [
+              child: Row(
+                children: [
+                  Icon(Icons.location_searching_rounded),
+                  SizedBox(width: 4),
+                  Text.rich(
                     TextSpan(
-                      text:
-                          "${widget.verifyModel.longitude}, ${widget.verifyModel.latitude}",
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      text: "Cordinates: ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                          text:
+                              "${widget.verifyModel.longitude}, ${widget.verifyModel.latitude}",
+                          style: TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
-            TextButton(
-              onPressed: () async {
-                final String googleMapsUrl =
-                    'https://www.google.com/maps/search/?api=1&query=${widget.verifyModel.latitude},${widget.verifyModel.longitude}';
+            Center(
+              child: TextButton(
+                onPressed: () async {
+                  final String googleMapsUrl =
+                      'https://www.google.com/maps/search/?api=1&query=${widget.verifyModel.latitude},${widget.verifyModel.longitude}';
 
-                if (!await launchUrl(Uri.parse(googleMapsUrl))) {
-                  throw Exception('Could not launch $googleMapsUrl');
-                }
-              },
+                  if (!await launchUrl(Uri.parse(googleMapsUrl))) {
+                    throw Exception('Could not launch $googleMapsUrl');
+                  }
+                },
 
-              child: Text(
-                "Show on Google Maps",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.blue,
-                  color: Colors.blue,
+                child: Text(
+                  "Show on Google Maps",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.blue,
+                    color: Colors.blue,
+                  ),
                 ),
               ),
             ),

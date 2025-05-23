@@ -1,4 +1,3 @@
-import 'package:ai_project/seller_screen.dart';
 import 'package:ai_project/verification_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -45,42 +44,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SellerScreen()),
-                    );
-                  },
-                  title: Text(
-                    "Continue as a Seller",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  trailing: Icon(Icons.arrow_forward_ios_outlined),
-                ),
-              ),
+              // SizedBox(height: 20),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.grey),
+              //     borderRadius: BorderRadius.circular(20),
+              //   ),
+              //   child: ListTile(
+              //     onTap: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(builder: (context) => SellerScreen()),
+              //       );
+              //     },
+              //     title: Text(
+              //       "Continue as a Seller",
+              //       style: TextStyle(fontWeight: FontWeight.bold),
+              //     ),
+              //     trailing: Icon(Icons.arrow_forward_ios_outlined),
+              //   ),
+              // ),
 
-              SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ListTile(
-                  onTap: () {},
-                  title: Text(
-                    "Continue as a User",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  trailing: Icon(Icons.arrow_forward_ios_outlined),
-                ),
-              ),
+              // SizedBox(height: 20),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.grey),
+              //     borderRadius: BorderRadius.circular(20),
+              //   ),
+              //   child: ListTile(
+              //     onTap: () {},
+              //     title: Text(
+              //       "Continue as a User",
+              //       style: TextStyle(fontWeight: FontWeight.bold),
+              //     ),
+              //     trailing: Icon(Icons.arrow_forward_ios_outlined),
+              //   ),
+              // ),
             ],
           ),
         ),
