@@ -20,10 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SizedBox(height: 40),
 
-              Image.asset("assets/logo.png", width: 200, height: 200),
+              // Image.asset("assets/logo.png", width: 200, height: 200),
 
-              SizedBox(height: 32),
-
+              // SizedBox(height: 32),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),

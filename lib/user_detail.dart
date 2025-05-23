@@ -1,5 +1,6 @@
 import 'package:ai_project/verify_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserDetail extends StatefulWidget {
   const UserDetail({super.key, required this.verifyModel});
@@ -96,6 +97,28 @@ class _UserDetailState extends State<UserDetail> {
               ),
               child: Text.rich(
                 TextSpan(
+                  text: "ID Expiry: ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text: widget.verifyModel.expiry,
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              width: double.infinity,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 1, color: Colors.grey),
+              ),
+              child: Text.rich(
+                TextSpan(
                   text: "Country: ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                   children: [
@@ -173,6 +196,72 @@ class _UserDetailState extends State<UserDetail> {
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ],
+                ),
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              width: double.infinity,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 1, color: Colors.grey),
+              ),
+              child: Text.rich(
+                TextSpan(
+                  text: "Adderess: ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text: widget.verifyModel.address,
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              width: double.infinity,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 1, color: Colors.grey),
+              ),
+              child: Text.rich(
+                TextSpan(
+                  text: "Cordinates: ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text:
+                          "${widget.verifyModel.longitude}, ${widget.verifyModel.latitude}",
+                      style: TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            TextButton(
+              onPressed: () async {
+                final String googleMapsUrl =
+                    'https://www.google.com/maps/search/?api=1&query=${widget.verifyModel.latitude},${widget.verifyModel.longitude}';
+
+                if (!await launchUrl(Uri.parse(googleMapsUrl))) {
+                  throw Exception('Could not launch $googleMapsUrl');
+                }
+              },
+
+              child: Text(
+                "Show on Google Maps",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                  color: Colors.blue,
                 ),
               ),
             ),

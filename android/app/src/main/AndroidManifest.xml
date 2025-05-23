@@ -6,6 +6,10 @@
         android:label="ai_project"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+           <meta-data 
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBUC1vUPFPgkXTGA75FXnOPWCo-TZQk0Do"
+                />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -43,6 +47,22 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+    <queries>
+    <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+        <!-- If your application checks for inAppBrowserView launch mode support -->
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
     </queries>
 </manifest>
